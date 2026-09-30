@@ -1,0 +1,6 @@
+{
+  "name": "World Explorer",
+  "description": "An all-in-one world trip planner from India to select countries and cities, generate day-by-day itineraries, estimate budgets, explore destinations, and manage travel documents.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
