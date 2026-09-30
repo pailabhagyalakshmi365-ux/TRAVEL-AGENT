@@ -10,6 +10,7 @@ import { DashboardAndSummary } from './components/DashboardAndSummary';
 import { DestinationExplorer } from './components/DestinationExplorer';
 import { HeroSection } from './components/HeroSection';
 import { ItinerarySection } from './components/ItinerarySection';
+import { N8nChatWidget } from './components/N8nChatWidget';
 import { Navbar } from './components/Navbar';
 import { TravelToolkit } from './components/TravelToolkit';
 import { TripPlannerForm } from './components/TripPlannerForm';
@@ -71,6 +72,7 @@ export default function App() {
     useState<DestinationData | null>(null);
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
   const [isAuthOpen, setIsAuthOpen] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   // User Auth State (never hardcoded)
   const [user, setUser] = useState<AuthUser | null>(() => {
@@ -469,6 +471,7 @@ export default function App() {
           onSelectDestinationForGuide={(dest) => setInspectedDestination(dest)}
           onToggleCityInTrip={handleToggleCityInTrip}
           onResetFlagshipTrip={handleResetFlagshipTrip}
+          onOpenChat={() => setIsChatOpen(true)}
         />
 
         <TripPlannerForm
@@ -625,6 +628,14 @@ export default function App() {
             // ignore
           }
         }}
+      />
+
+      {/* n8n Live Travel Chat Widget */}
+      <N8nChatWidget
+        trip={activeTrip}
+        activeCurrency={activeCurrency}
+        isOpen={isChatOpen}
+        onToggleOpen={() => setIsChatOpen((prev) => !prev)}
       />
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, ArrowRight, Globe, Compass } from 'lucide-react';
+import { Search, ArrowRight, Globe, Compass, MessageSquare } from 'lucide-react';
 import {
   computeRouteLegs,
   DESTINATIONS,
@@ -18,6 +18,7 @@ interface HeroSectionProps {
   onSelectDestinationForGuide: (dest: DestinationData) => void;
   onToggleCityInTrip: (cityId: string) => void;
   onResetFlagshipTrip: () => void;
+  onOpenChat?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -30,6 +31,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   onSelectDestinationForGuide,
   onToggleCityInTrip,
   onResetFlagshipTrip,
+  onOpenChat,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [heroImgFailed, setHeroImgFailed] = useState(false);
@@ -217,6 +219,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 <Compass className="w-4 h-4" aria-hidden="true" />
                 <span>Explore Destinations</span>
               </button>
+
+              {onOpenChat && (
+                <button
+                  type="button"
+                  onClick={onOpenChat}
+                  className="px-5 py-3.5 bg-sky-700/90 hover:bg-sky-600 text-white border border-sky-400/30 backdrop-blur-xs text-sm font-semibold rounded-xl transition-colors inline-flex items-center gap-2 whitespace-nowrap cursor-pointer"
+                >
+                  <MessageSquare className="w-4 h-4" aria-hidden="true" />
+                  <span>Live Travel Chat</span>
+                </button>
+              )}
             </div>
           </div>
         </div>
